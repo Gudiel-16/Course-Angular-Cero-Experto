@@ -1,0 +1,105 @@
+<h2>Template: Básicos</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <!-- enlace la referncia de este form a la variable miFormulario-->
+        <form (ngSubmit)="guardar()" 
+                #miFormulario="ngForm"
+                autocomplete="off">
+
+            <!-- Campo de producto -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Producto</label>
+                <div class="col-sm-9">
+                    <!-- ngModel: le decimos que que tome este campo del form, pero tiene que existir name -->
+                    <input type="text"
+                            class="form-control"
+                            [ngModel]="initForm.producto"
+                            [ngModelOptions]="{standalone: true}"
+                            name="producto"
+                            placeholder="Nombre del producto"
+                            required
+                            minlength="3">
+                    <span class="form-text text-danger"
+                            *ngIf="nombreValido()">
+                        Debe de ser de 3 letras
+                    </span>
+                </div>
+            </div>
+
+            <!-- Campo de precio -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Precio</label>
+                <div class="col-sm-9">
+                    <input type="number"
+                            class="form-control"
+                            [ngModel]="initForm.precio"
+                            [ngModelOptions]="{standalone: true}"
+                            placeholder="Precio del producto"
+                            required
+                            min="0">
+                            <span class="form-text text-danger"
+                            *ngIf="precioValido()">
+                        El precio debe ser 0 o mayor
+                    </span>
+                </div>
+            </div>
+
+            <!-- Campo de existencias -->
+            <!-- CustoMin de la directiva y le extiende la propiedad 'minimo' a este input -->
+            <!-- nameExist: para que se pueda acceder al elemento -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Exisencias</label>
+                <div class="col-sm-9">
+                    <input type="number"
+                            class="form-control"
+                            [ngModel]="initForm.existencias"
+                            name="existencias"
+                            #nameExist="ngModel"
+                            customMin
+                            [minimo]="0"
+                            required
+                            placeholder="Existencias del producto">
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="row">
+                <div class="col">
+                    <button type="submit"
+                            [disabled]="miFormulario.invalid"
+                            class="btn btn-primary float-end">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+
+        <!-- Cuando es formulario es valido, por el: campos obligatorios o requeridos -->
+        <span>Valid</span>
+        <pre>{{ miFormulario.valid }}</pre>
+
+        <!-- No se han cambiado ninguno de los valores, desde que se le presento al usuario -->
+        <span>Pristine</span>
+        <pre>{{ miFormulario.pristine }}</pre>
+
+        <!-- Cuando el usuario a tocado el formulario  -->
+        <span>Touched</span>
+        <pre>{{ miFormulario.touched }}</pre>
+
+        <!-- Valores del formulario, de los input -->
+        <span>Value</span>
+        <pre>{{ miFormulario.value | json }}</pre>
+
+        <span>CustomDirective</span>
+        <pre>{{ nameExist?.errors | json }}</pre>
+
+    </div>
+</div>

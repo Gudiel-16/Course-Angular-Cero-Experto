@@ -1,0 +1,12 @@
+html, body{
+    margin: 10px;
+    background-color: var(--surface-b);
+    font-family: var(--font-family); 
+}
+
+.text-layout {
+    color: var(--text-color);
+}
+
+/* --surface-b y las demas que empiezan con -- 
+    Son variable de primeNg global, que se encuentra en node_modules/primeng/resources/themes/vela-blue/theme.css*/

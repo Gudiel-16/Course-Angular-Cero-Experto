@@ -1,0 +1,28 @@
+<h2>Por pais</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <!-- onEnter y onDebounce viene desde componente 'pais-input' -->
+        <app-pais-input 
+            (onEnter)="buscar($event)"
+            (onDebounce)="segurencias($event)"
+            placeholder="Buscar pais..." >
+        </app-pais-input>
+    </div>
+</div>
+
+<hr>
+
+<div *ngIf="hayError" class="alert alert-danger">
+    No se encontro nada con el termino {{termino}}
+</div>
+
+<div *ngIf="paises.length > 0" class="row">
+    <div class="col">
+        <app-pais-tabla [paises]="paises"></app-pais-tabla>
+    </div>
+</div>
+
+<!-- placeholder="Buscar pais..." para pasar como parametro un string, para recibirlo por @Input -->
+<!-- Si fuera una variable se pone en corchetes -> [placeholder]="mi_variable" -->

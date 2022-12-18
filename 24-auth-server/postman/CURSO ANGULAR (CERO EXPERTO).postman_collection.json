@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "be4dc984-a64c-43e3-8798-99e02b98ee99",
+		"name": "CURSO ANGULAR (CERO EXPERTO)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12852303"
+	},
+	"item": [
+		{
+			"name": "auth-back",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"gudiel\",\r\n    \"email\": \"test1@test.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/new",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test1@test.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Revalidar token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzlhYmIzYmIyMGVmZDhkM2M2MjJlY2UiLCJuYW1lIjoiZ3VkaWVsIiwiaWF0IjoxNjcxMDg1MjQ1LCJleHAiOjE2NzExNzE2NDV9.hAMWVd0D62yQYABQZdz8u7IbwuYxNNdQqVtIhFbfES8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/auth/renew",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"renew"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,95 @@
+<div class="text-layout">
+    <h1>Pipes no tan comunes </h1>
+    <p>
+        Pipes incluídos en Angular - Usualmente en el Common Module.
+    </p>
+</div>
+
+<!-- PARA EFECTOS CUANDO SE HACE CLICK en el toggleable o el menu, se hizo la configuracion global de prime en app.component.ts -->
+
+<div class="grid">
+
+    <div class="col md:col-6">
+        <p-fieldset legend="i18nSelect Pipe" [toggleable]="true"> <!--legend: nombre a mostrar, toggleable: para que se encoja o campacte -->
+            <p>
+                Saludos {{ nombre }}, es un placer 
+                {{ genero | i18nSelect:invitacionMapa }} <!-- pone, invitarlo o invitarla segun nombre -->
+                a nuestro evento.
+            </p>
+            <button (click)="cambiarCliente()" pButton label="Cambiar Persona" class="p-button-help"></button>
+        </p-fieldset>
+    </div>
+
+    <div class="col md:col-6">
+        <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+            
+            <p>
+                Actualmente {{ clientes.length | i18nPlural:clientesMapa }}
+            </p>
+
+            <button (click)="borrarCliente()" 
+                    pButton 
+                    label="Borrar cliente" 
+                    class="p-button-danger">
+            </button>
+
+        </p-fieldset>
+    </div>
+
+    <div class="col md:col-6">
+        <p-fieldset legend="Slice Pipe" [toggleable]="true">
+          
+            <b>Original</b>
+            <pre>{{ clientes }}</pre><!-- Como es un objeto, al eliminar cliente no lo vuelve a dibujar, usar *ngFor para eso-->
+
+            <b>slice:0:2</b>
+            <pre>{{ clientes | slice:0:2 }}</pre> <!-- llega desde la posicion 0, hasta la 2, pero el 2 solo excluye -->
+            
+            <b>slice:1:2</b>
+            <pre>{{ clientes | slice:1:2 }}</pre>
+
+            <b>slice:1:3</b>
+            <pre>{{ clientes | slice:1:3 }}</pre>
+
+            <b>slice:3:3</b>
+            <pre>{{ clientes | slice:3:4 }}</pre>
+
+            <b>slice:0:4</b>
+            <pre>{{ nombre | slice:0:4 }}</pre>
+
+        </p-fieldset>
+    </div>
+
+    <div class="col md:col-6">
+        <p-fieldset legend="Json Pipe" [toggleable]="true">
+
+            <pre>{{ heroes | json }}</pre> <!-- Muestra el objeto como json -->
+
+        </p-fieldset>
+    </div>
+
+    <div class="col md:col-6">
+        <p-fieldset legend="KeyValue Pipe" [toggleable]="true">
+
+            <ul>
+                <li *ngFor="let item of persona | keyvalue"> <!-- keyvalue: Para recorrer un objeto no iterable, como el json -->
+                    <b>{{ item.key | titlecase }}:</b> {{ item.value }} <!-- se usa el .key y .value para acceder a los valores -->
+                </li>
+            </ul>
+
+        </p-fieldset>
+    </div>
+
+    <div class="col md:col-6">
+        <p-fieldset legend="Async Pipe" [toggleable]="true">
+
+            <pre *ngIf="!(miObservable | async)">Resolviendo observable</pre> <!-- async se suscribe al observable internamente-->
+            <pre>{{ miObservable | async }}</pre>                             <!-- este se suscribe nuevamente al observable -->
+
+            <pre *ngIf="!(valorPromesa | async)">Resolviendo promesa</pre> <!-- cuando se resuelve la promesa, no muestra esto -->
+            <pre>{{ valorPromesa | async }}</pre>                           <!-- este se suscribe nuevamente al observable -->
+            
+        </p-fieldset>
+    </div>
+    
+</div>

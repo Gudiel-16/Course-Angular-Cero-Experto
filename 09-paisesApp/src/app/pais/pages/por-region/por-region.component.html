@@ -1,0 +1,33 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+    <h1>Buscar por region <small> {{ regionActiva | titlecase }} </small></h1>
+    <hr>
+    
+    <h5>Seleccione la region</h5>
+    
+    <div class="row">
+        <div class="col">
+            <button *ngFor="let region of regiones" 
+                    [class]="getClaseCSS(region)"
+                    (click)="activarRegion(region)">
+                {{ region }}
+            </button>
+        </div>
+    </div>
+    
+    <div *ngIf="paises.length > 0" class="row">
+        <div class="col">
+            <app-pais-tabla [paises]="paises"></app-pais-tabla>
+        </div>
+    </div>
+</div>
+
+<!-- FORMA 1 -->
+<!-- [class.btn-primary], lo agrega solo cuando se cumple la condicion que queremos -->
+
+<!-- FORMA 2 -->
+<!-- Pone unn estilo u otro, pero evalua las dos formas -->
+<!-- [ngClass]="{
+                    'btn-primary': regionActiva === region,
+                    'btn-outline-primary': regionActiva !== region
+                }" -->
+
