@@ -114,16 +114,22 @@ git config --global user.email "Tu correo"
 
 # Algunos comandos
 
-* ng new name_app
+* ng new name_app (Proyecto como standalone a partir de 17+)
+* ng new name_app --no-standalone (Proyecto con modulos)
 * ng g m name_module
 * ng g c name_component
 * ng g c name_component --skip-tests --inline-style (sin archivos test, ni * estilos)
+* ng g c name_component --standalone (como standalone)
 * ng g s name_service --skip-tests
 * ng g m appRouter --flat (--flat Para que no cree la carpeta app-router)
 * ng g pipe name_pipe --skip-tests
 * ng g guard name_guard --skip-tests (con barra espaciadora seleccionar * CanActivate y CanLoad)
 * ng g m name_module --routing (Crea el modulo de routing automaticamente)
 * ng g d name_directive --skip-tests
+
+# Herramientas
+
+* Quicktype (Para crear interfaces)
 
 Otros:
 
