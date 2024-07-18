@@ -120,6 +120,7 @@ git config --global user.email "Tu correo"
 * ng g c name_component
 * ng g c name_component --skip-tests --inline-style (sin archivos test, ni * estilos)
 * ng g c name_component --standalone (como standalone)
+ng g c dashboard/dashboard --skip-selector (no agrega nombre del selector en el .ts)
 * ng g s name_service --skip-tests
 * ng g m appRouter --flat (--flat Para que no cree la carpeta app-router)
 * ng g pipe name_pipe --skip-tests
